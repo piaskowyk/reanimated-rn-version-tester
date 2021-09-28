@@ -3,13 +3,14 @@ import Animated, {
   withTiming,
   useAnimatedStyle,
   Easing,
+  runOnUI
 } from 'react-native-reanimated';
 import {View, Button} from 'react-native';
 import React from 'react';
 
 export default function AnimatedStyleUpdateExample(props) {
   const randomWidth = useSharedValue(10);
-
+  console.log(runOnUI)
   const config = {
     duration: 500,
     easing: Easing.bezier(0.5, 0.01, 0, 1),

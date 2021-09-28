@@ -10,9 +10,12 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "@babel/preset-typescript": "^7.15.0",
+    "lodash.isequal": "^4.5.0",
     "react": "16.13.1",
     "react-native": "0.63.4",
-    "react-native-reanimated": "^2.2.0"
+    "react-native-reanimated": "^2.2.0",
+    "react-native-screens": "^3.7.2"
   },
   "devDependencies": {
     "@babel/core": "^7.8.4",

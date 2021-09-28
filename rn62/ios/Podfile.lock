@@ -290,7 +290,7 @@ PODS:
     - React-cxxreact (= 0.62.3)
     - React-jsi (= 0.62.3)
     - ReactCommon/callinvoker (= 0.62.3)
-  - RNReanimated (2.2.1):
+  - RNReanimated (2.3.0-beta.1):
     - DoubleConversion
     - FBLazyVector
     - FBReactNativeSpec
@@ -319,6 +319,9 @@ PODS:
     - ReactCommon/callinvoker
     - ReactCommon/turbomodule/core
     - Yoga
+  - RNScreens (3.7.2):
+    - React-Core
+    - React-RCTImage
   - Yoga (1.14.0)
   - YogaKit (1.18.1):
     - Yoga (~> 1.14)
@@ -371,6 +374,7 @@ DEPENDENCIES:
   - ReactCommon/callinvoker (from `../node_modules/react-native/ReactCommon`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
   - RNReanimated (from `../node_modules/react-native-reanimated`)
+  - RNScreens (from `../node_modules/react-native-screens`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
@@ -439,6 +443,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon"
   RNReanimated:
     :path: "../node_modules/react-native-reanimated"
+  RNScreens:
+    :path: "../node_modules/react-native-screens"
   Yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
@@ -478,7 +484,8 @@ SPEC CHECKSUMS:
   React-RCTText: fc8aaead300090f23dd0974545d75e3c43883922
   React-RCTVibration: 36a70f1015574284fa6770993c1e83a1f85dbabc
   ReactCommon: 3ea86417fa6e432b500579df40b057df54cfb4d4
-  RNReanimated: a5ffa42bd1ed354210f60c1abf9cdb9e3da7e293
+  RNReanimated: 36309b71dfceb56a8276993ff90d6aa5f5e805bd
+  RNScreens: 0591543e343c7444ea1756b6265d81a4295922c9
   Yoga: b5db822228963b87948afa7a5a531088607151dc
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 
