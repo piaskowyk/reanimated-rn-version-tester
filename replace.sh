@@ -1,7 +1,7 @@
 rm -rf package
 tar zxvf react-native-reanimated*
 
-default_versions=("67" "66" "65" "64" "63" "62")
+default_versions=("67rc2" "66" "65" "64" "63" "62")
 
 if [[ $# -ge 1 ]]; then
     for version in $@
