@@ -1,0 +1,48 @@
+name: RN version tester for Reanimated 2
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build_android:
+    name: Test Android app
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        working-directory: [0.70.2, 0.69.6, 0.68.4, 0.67.4, 0.66.4, 0.65.2, 0.64.3, 0.63.4, 0.62.2]
+      fail-fast: false
+    concurrency:
+      group: build_android_rea2-${{ matrix.working-directory }}
+      cancel-in-progress: true
+    steps:
+      - name: Create react app
+        run: npx react-native init app --version ${{ matrix.working-directory }}
+      - name: Install Reanimated
+        working-directory: app
+        run: yarn add github:software-mansion/react-native-reanimated#Reanimated2
+      - name: Build Android app
+        working-directory: app/android
+        run: ./gradlew assembleDebug --console=plain
+  
+  build_ios:
+    name: Test iOS app
+    runs-on: macos-12
+    strategy:
+      matrix:
+        working-directory: [0.70.2, 0.69.6, 0.68.4, 0.67.4, 0.66.4, 0.65.2, 0.64.3, 0.63.4, 0.62.2]
+      fail-fast: false
+    concurrency:
+      group: build_ios-rea2-${{ matrix.working-directory }}
+      cancel-in-progress: true
+    steps:
+      - name: Create react app
+        run: npx react-native init app --version ${{ matrix.working-directory }}
+      - name: Install Reanimated
+        working-directory: app
+        run: yarn add github:software-mansion/react-native-reanimated#Reanimated2
+      - name: Install pods
+        working-directory: app/ios
+        run: pod install
+      - name: Build iOS app
+        working-directory: app
+        run: npx react-native run-ios
