@@ -35,7 +35,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: reanimated.tgz
-          path: '*.tgz'
+          path: 'reanimated/*.tgz'
 
   build_android:
     name: Test Android app
