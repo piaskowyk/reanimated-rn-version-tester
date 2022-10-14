@@ -60,7 +60,7 @@ jobs:
           name: reanimated.tgz
           path: 'reanimated.tgz'
       - name: Unzip Reanimated package
-        run: unzip reanimated.tgz
+        run: unzip *.tgz
       - name: Replace with Reanimated package
         run: rm -rf app/node-modules/react-native-reanimated/* && cp ./package/* app/node-modules.react-native-reanimated/
       - name: Build Android app
