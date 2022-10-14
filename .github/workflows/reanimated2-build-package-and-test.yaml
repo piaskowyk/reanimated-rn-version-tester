@@ -49,11 +49,11 @@ jobs:
       group: build_android_rea2-${{ matrix.working-directory }}
       cancel-in-progress: true
     steps:
-      - name: Create react app
-        run: npx react-native init app --version ${{ matrix.working-directory }}
-      - name: Install Reanimated
-        working-directory: app
-        run: yarn add github:software-mansion/react-native-reanimated#Reanimated2
+      # - name: Create react app
+      #   run: npx react-native init app --version ${{ matrix.working-directory }}
+      # - name: Install Reanimated
+      #   working-directory: app
+      #   run: yarn add github:software-mansion/react-native-reanimated#Reanimated2
       - name: Download npm package
         uses: actions/download-artifact@v3
         with:
@@ -61,11 +61,11 @@ jobs:
           path: 'reanimated.tgz'
       - name: Unzip Reanimated package
         run: pwd && ls -la && unzip *.tgz
-      - name: Replace with Reanimated package
-        run: rm -rf app/node-modules/react-native-reanimated/* && cp ./package/* app/node-modules.react-native-reanimated/
-      - name: Build Android app
-        working-directory: app/android
-        run: ./gradlew assembleDebug --console=plain
+      # - name: Replace with Reanimated package
+      #   run: rm -rf app/node-modules/react-native-reanimated/* && cp ./package/* app/node-modules.react-native-reanimated/
+      # - name: Build Android app
+      #   working-directory: app/android
+      #   run: ./gradlew assembleDebug --console=plain
   
   # build_ios:
   #   name: Test iOS app
