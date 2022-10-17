@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 
 env:
-  REANIMATED_BRANCH: @piaskowyk/sourceSet
+  REANIMATED_BRANCH: "@piaskowyk/sourceSet"
 
 jobs:
   build_android:
