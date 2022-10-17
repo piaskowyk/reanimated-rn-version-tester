@@ -23,6 +23,10 @@ jobs:
       - name: Install Reanimated
         working-directory: app
         run: yarn add github:software-mansion/react-native-reanimated#${{ env.REANIMATED_BRANCH }}
+      - name: Setup cmake
+        uses: jwlawson/actions-setup-cmake@v1.13
+        with:
+          cmake-version: '3.8.x'
       - name: Build Android app
         working-directory: app/android
         run: ./gradlew assembleDebug --console=plain
