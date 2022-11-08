@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 
 env:
-  REANIMATED_BRANCH: "@piaskowyk/sourceSet"
+  REANIMATED_BRANCH: "layoutanim_rewrite"
 
 jobs:
   build_android:
@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        working-directory: [0.70.2, 0.69.6, 0.68.4, 0.67.4, 0.66.4, 0.65.2, 0.64.3, 0.63.4, 0.62.2]
+        working-directory: ['0.70', '0.69', '0.68', '0.67', '0.66', '0.65', '0.64', '0.63', '0.62']
       fail-fast: false
     concurrency:
       group: build_android_rea2-${{ matrix.working-directory }}
@@ -36,7 +36,7 @@ jobs:
     runs-on: macos-12
     strategy:
       matrix:
-        working-directory: [0.70.2, 0.69.6, 0.68.4, 0.67.4, 0.66.4, 0.65.2, 0.64.3, 0.63.4, 0.62.2]
+        working-directory: ['0.70', '0.69', '0.68', '0.67', '0.66', '0.65', '0.64', '0.63', '0.62']
       fail-fast: false
     concurrency:
       group: build_ios-rea2-${{ matrix.working-directory }}
