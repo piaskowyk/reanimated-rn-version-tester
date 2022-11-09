@@ -8,48 +8,28 @@ env:
 
 jobs:
   build_android:
-    name: Test Android app
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        working-directory: ['0.70', '0.69', '0.68', '0.67', '0.66', '0.65', '0.64', '0.63', '0.62']
-      fail-fast: false
-    concurrency:
-      group: build_android_rea2-${{ matrix.working-directory }}
-      cancel-in-progress: true
-    steps:
-      - name: Create react app
-        run: npx react-native init app --version ${{ matrix.working-directory }}
-      - name: Install Reanimated
-        working-directory: app
-        run: yarn add github:software-mansion/react-native-reanimated#${{ env.REANIMATED_BRANCH }}
-      - name: Setup cmake
-        uses: jwlawson/actions-setup-cmake@v1.13
-        with:
-          cmake-version: '3.8.x'
-      - name: Build Android app
-        working-directory: app/android
-        run: ./gradlew assembleDebug --console=plain
-  
+    name: Build Reaniamted on Android
+    uses: ./.github/workflows/build-app-action.yml
+    with:
+      platform: Android
+      runner: ubuntu-latest
+      concurrency_group: build_android-branch-${{ github.ref }}
+      branch_name: ${{ env.REANIMATED_BRANCH }}
+
   build_ios:
-    name: Test iOS app
-    runs-on: macos-12
-    strategy:
-      matrix:
-        working-directory: ['0.70', '0.69', '0.68', '0.67', '0.66', '0.65', '0.64', '0.63', '0.62']
-      fail-fast: false
-    concurrency:
-      group: build_ios-rea2-${{ matrix.working-directory }}
-      cancel-in-progress: true
-    steps:
-      - name: Create react app
-        run: npx react-native init app --version ${{ matrix.working-directory }}
-      - name: Install Reanimated
-        working-directory: app
-        run: yarn add github:software-mansion/react-native-reanimated#${{ env.REANIMATED_BRANCH }}
-      - name: Install pods
-        working-directory: app/ios
-        run: pod install
-      - name: Build iOS app
-        working-directory: app
-        run: npx react-native run-ios
+    name: Build Reaniamted on iOS
+    uses: ./.github/workflows/build-app-action.yml
+    with:
+      platform: iOS
+      runner: macos-12
+      concurrency_group: build_android-branch-${{ github.ref }}
+      branch_name: 'Reanimated2'
+
+  build_windows:
+    name: Build Reaniamted on Android (Windows)
+    uses: ./.github/workflows/build-app-action.yml
+    with:
+      platform: Android
+      runner: windows-latest
+      concurrency_group: build_android-branch-${{ github.ref }}
+      branch_name: 'Reanimated2'
