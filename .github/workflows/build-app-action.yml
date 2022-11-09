@@ -23,7 +23,7 @@ jobs:
         working-directory: ['0.70', '0.69', '0.68', '0.67', '0.66', '0.65', '0.64', '0.63', '0.62']
       fail-fast: false
     concurrency:
-      group: ${{ inputs.concurrency_group }}
+      group: ${{ inputs.concurrency_group }}-${{ matrix.working-directory }}
       cancel-in-progress: true
     steps:
       - name: Setup Java
