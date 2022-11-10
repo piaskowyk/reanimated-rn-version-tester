@@ -1,0 +1,32 @@
+name: RN version tester for Reanimated 2
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build_android:
+    name: Build Reaniamted on Android
+    uses: ./.github/workflows/playground-action.yml
+    with:
+      platform: Android
+      runner: ubuntu-latest
+      concurrency_group: build_android-rea2-${{ github.ref }}
+      branch_name: 'Reanimated2'
+
+  # build_ios:
+  #   name: Build Reaniamted on iOS
+  #   uses: ./.github/workflows/playground-action.yml
+  #   with:
+  #     platform: iOS
+  #     runner: macos-12
+  #     concurrency_group: build_ios-rea2-${{ github.ref }}
+  #     branch_name: 'Reanimated2'
+
+  # build_android_windows:
+  #   name: Build Reaniamted on Android (Windows)
+  #   uses: ./.github/workflows/playground-action.yml
+  #   with:
+  #     platform: Android
+  #     runner: windows-latest
+  #     concurrency_group: build_android_windows-rea2-${{ github.ref }}
+  #     branch_name: 'Reanimated2'

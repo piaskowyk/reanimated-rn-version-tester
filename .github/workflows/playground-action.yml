@@ -1,0 +1,57 @@
+name: (Action) Build matrics app
+on:
+  workflow_call:
+    inputs:
+      platform:
+        required: true
+        type: string
+      runner:
+        required: true
+        type: string
+      concurrency_group:
+        required: true
+        type: string
+      branch_name:
+        required: true
+        type: string
+
+jobs:
+  build:
+    runs-on: ${{ inputs.runner }}
+    strategy:
+      matrix:
+        working-directory: ['0.63']
+      fail-fast: false
+    concurrency:
+      group: ${{ inputs.concurrency_group }}-${{ matrix.working-directory }}
+      cancel-in-progress: true
+    steps:
+      - name: Setup Java
+        if: ${{ inputs.runner == 'windows-latest' }}
+        uses: actions/setup-java@v1
+        with:
+          java-version: '11'
+      - name: Setup cmake
+        uses: jwlawson/actions-setup-cmake@v1.13
+        with:
+          cmake-version: '3.16.x'
+
+      - name: Create react app
+        run: npx react-native init app --version ${{ matrix.working-directory }}
+      - name: Install Reanimated
+        working-directory: app
+        run: yarn add github:software-mansion/react-native-reanimated#${{ inputs.branch_name }}
+
+      - name: Install pods
+        if: ${{ inputs.platform == 'iOS' }}
+        working-directory: app/ios
+        run: pod install
+      - name: Build Android app
+        if: ${{ inputs.platform == 'iOS' }}
+        working-directory: app
+        run: npx react-native run-ios
+
+      - name: Build Android app
+        if: ${{ inputs.platform == 'Android' }}
+        working-directory: app/android
+        run: ./gradlew assembleDebug --console=plain
