@@ -31,20 +31,17 @@ jobs:
       #   uses: actions/setup-java@v1
       #   with:
       #     java-version: '11'
-      - name: Use cmake
-        run: cmake --version
-      - name: Setup cmake
-        uses: jwlawson/actions-setup-cmake@v1.13
+      - name: Install NDK
+        uses: nttld/setup-ndk@v1
+        id: setup-ndk
         with:
-          cmake-version: '3.16.x'
-      - name: Use cmake
-        run: cmake --version
+          ndk-version: r21d
 
-      # - name: Create react app
-      #   run: npx react-native init app --version ${{ matrix.working-directory }}
-      # - name: Install Reanimated
-      #   working-directory: app
-      #   run: yarn add github:software-mansion/react-native-reanimated#${{ inputs.branch_name }}
+      - name: Create react app
+        run: npx react-native init app --version ${{ matrix.working-directory }}
+      - name: Install Reanimated
+        working-directory: app
+        run: yarn add github:software-mansion/react-native-reanimated#${{ inputs.branch_name }}
 
       # - name: Install pods
       #   if: ${{ inputs.platform == 'iOS' }}
@@ -55,7 +52,7 @@ jobs:
       #   working-directory: app
       #   run: npx react-native run-ios
 
-      # - name: Build Android app
-      #   if: ${{ inputs.platform == 'Android' }}
-      #   working-directory: app/android
-      #   run: ./gradlew assembleDebug --console=plain
+      - name: Build Android app
+        if: ${{ inputs.platform == 'Android' }}
+        working-directory: app/android
+        run: ./gradlew assembleDebug --console=plain
