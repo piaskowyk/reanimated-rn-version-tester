@@ -33,7 +33,7 @@ jobs:
           java-version: '11'
 
       - name: Create react app
-        run: npx react-native init app --version ${{ matrix.working-directory }}
+        run: npx react-native init app --skip-install --version ${{ matrix.working-directory }}
       - name: Install Reanimated
         working-directory: app
         run: yarn add github:software-mansion/react-native-reanimated#${{ inputs.branch_name }}
