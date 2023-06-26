@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 
 env:
-  REANIMATED_BRANCH: "@piaskowyk/fix-backward-compatibility"
+  REANIMATED_BRANCH: "@piaskowyk/UIManager-refactor"
 
 jobs:
   build_android:
@@ -14,7 +14,7 @@ jobs:
       platform: Android
       runner: ubuntu-latest
       concurrency_group: build_android-branch-${{ github.ref }}
-      branch_name: "@piaskowyk/fix-backward-compatibility"
+      branch_name: "@piaskowyk/UIManager-refactor"
 
   build_ios:
     name: Build Reaniamted on iOS
@@ -23,7 +23,7 @@ jobs:
       platform: iOS
       runner: macos-12
       concurrency_group: build_ios-branch-${{ github.ref }}
-      branch_name: "@piaskowyk/fix-backward-compatibility"
+      branch_name: "@piaskowyk/UIManager-refactor"
 
   build_android_windows:
     name: Build Reaniamted on Android (Windows)
@@ -32,4 +32,4 @@ jobs:
       platform: Android
       runner: windows-latest
       concurrency_group: build_android_windows-branch-${{ github.ref }}
-      branch_name: "@piaskowyk/fix-backward-compatibility"
+      branch_name: "@piaskowyk/UIManager-refactor"
