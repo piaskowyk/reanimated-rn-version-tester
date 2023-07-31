@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 
 env:
-  REANIMATED_BRANCH: "@piaskowyk/UIManager-refactor"
+  REANIMATED_BRANCH: "@piaskowyk/CI-react-native-nightly"
 
 jobs:
   build_android:
