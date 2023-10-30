@@ -20,7 +20,7 @@ jobs:
     runs-on: ${{ inputs.runner }}
     strategy:
       matrix:
-        working-directory: ['0.72', '0.71', '0.70', '0.69', '0.68', '0.67', '0.66']
+        working-directory: ['0.73', '0.72', '0.71', '0.70', '0.69', '0.68', '0.67', '0.66']
       fail-fast: false
     concurrency:
       group: ${{ inputs.concurrency_group }}-${{ matrix.working-directory }}
