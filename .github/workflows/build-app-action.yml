@@ -30,7 +30,11 @@ jobs:
         if: ${{ inputs.runner == 'windows-latest' }}
         uses: actions/setup-java@v1
         with:
-          java-version: '11'
+          java-version: 11
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
 
       - name: Create react app
         run: npx react-native init app --skip-install --version ${{ matrix.working-directory }}
