@@ -4,14 +4,14 @@ on:
   workflow_dispatch:
 
 jobs:
-  build_android:
-    name: Build Reaniamted on Android
-    uses: ./.github/workflows/build-app-action.yml
-    with:
-      platform: Android
-      runner: ubuntu-latest
-      concurrency_group: build_android-branch-${{ github.ref }}
-      branch_name: "@piaskowyk/install_modules_dependencies"
+  # build_android:
+  #   name: Build Reaniamted on Android
+  #   uses: ./.github/workflows/build-app-action.yml
+  #   with:
+  #     platform: Android
+  #     runner: ubuntu-latest
+  #     concurrency_group: build_android-branch-${{ github.ref }}
+  #     branch_name: "@piaskowyk/install_modules_dependencies"
 
   build_ios:
     name: Build Reaniamted on iOS
@@ -22,11 +22,11 @@ jobs:
       concurrency_group: build_ios-branch-${{ github.ref }}
       branch_name: "@piaskowyk/install_modules_dependencies"
 
-  build_android_windows:
-    name: Build Reaniamted on Android (Windows)
-    uses: ./.github/workflows/build-app-action.yml
-    with:
-      platform: Android
-      runner: windows-latest
-      concurrency_group: build_android_windows-branch-${{ github.ref }}
-      branch_name: "@piaskowyk/install_modules_dependencies"
+  # build_android_windows:
+  #   name: Build Reaniamted on Android (Windows)
+  #   uses: ./.github/workflows/build-app-action.yml
+  #   with:
+  #     platform: Android
+  #     runner: windows-latest
+  #     concurrency_group: build_android_windows-branch-${{ github.ref }}
+  #     branch_name: "@piaskowyk/install_modules_dependencies"
