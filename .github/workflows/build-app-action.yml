@@ -49,7 +49,7 @@ jobs:
       - name: Build Android app
         if: ${{ inputs.platform == 'iOS' }}
         working-directory: app
-        run: npx react-native run-ios
+        run: npx react-native@${{ matrix.rn-version }} run-ios
 
       - name: Build Android app
         if: ${{ inputs.platform == 'Android' }}
