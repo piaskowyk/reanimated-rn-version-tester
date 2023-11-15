@@ -20,10 +20,10 @@ jobs:
     runs-on: ${{ inputs.runner }}
     strategy:
       matrix:
-        working-directory: ['next', '0.72', '0.71', '0.70', '0.69', '0.68', '0.67', '0.66']
+        rn-version: ['next', '0.72', '0.71', '0.70', '0.69', '0.68', '0.67', '0.66']
       fail-fast: false
     concurrency:
-      group: ${{ inputs.concurrency_group }}-${{ matrix.working-directory }}
+      group: ${{ inputs.concurrency_group }}-${{ matrix.rn-version }}
       cancel-in-progress: true
     steps:
       - name: Setup Java
@@ -37,7 +37,7 @@ jobs:
           node-version: 18
 
       - name: Create react app
-        run: npx react-native init app --skip-install --version ${{ matrix.working-directory }}
+        run: npx react-native@${{ matrix.rn-version }} init app --skip-install --version ${{ matrix.rn-version }}
       - name: Install Reanimated
         working-directory: app
         run: yarn add github:software-mansion/react-native-reanimated#${{ inputs.branch_name }}
