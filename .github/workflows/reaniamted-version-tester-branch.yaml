@@ -20,7 +20,7 @@ jobs:
       platform: iOS
       runner: macos-12
       concurrency_group: build_ios-branch-${{ github.ref }}
-      branch_name: "@piaskowyk/install_modules_dependencies"
+      branch_name: "gabrieldonadel:@gabrieldonadel/disable-hermes-debugger-on-release"
 
   # build_android_windows:
   #   name: Build Reaniamted on Android (Windows)
