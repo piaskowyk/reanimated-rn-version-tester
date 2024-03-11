@@ -11,7 +11,7 @@ jobs:
       platform: Android
       runner: ubuntu-latest
       concurrency_group: build_android-branch-${{ github.ref }}
-      branch_name: "@wolewicki/bridgeless-mode-with-runtime-executor"
+      branch_name: "@wolewicki/migrate-to-turbomodule"
 
   build_ios:
     name: Build Reaniamted on iOS
@@ -20,7 +20,7 @@ jobs:
       platform: iOS
       runner: macos-12
       concurrency_group: build_ios-branch-${{ github.ref }}
-      branch_name: "@wolewicki/bridgeless-mode-with-runtime-executor"
+      branch_name: "@wolewicki/migrate-to-turbomodule"
 
   build_android_windows:
     name: Build Reaniamted on Android (Windows)
@@ -29,4 +29,4 @@ jobs:
       platform: Android
       runner: windows-latest
       concurrency_group: build_android_windows-branch-${{ github.ref }}
-      branch_name: "@wolewicki/bridgeless-mode-with-runtime-executor"
+      branch_name: "@wolewicki/migrate-to-turbomodule"
